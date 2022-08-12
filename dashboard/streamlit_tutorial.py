@@ -21,7 +21,7 @@ st.markdown("Streamlit has a handy decorator [`st.cache`](https://streamlit.io/d
 st.code("""
 @st.cache
 def get_data():
-    url = "http://data.insideairbnb.com/united-states/ny/new-york-city/2019-09-12/visualisations/listings.csv"
+    url = "http://data.insideairbnb.com/united-states/ny/new-york-city/2022-06-03/visualisations/listings.csv"
     return pd.read_csv(url)
 """, language="python")
 st.markdown("_To display a code block, pass in the string to display as code to [`st.code`](https://streamlit.io/docs/api.html#streamlit.code)_.")
