@@ -4,7 +4,9 @@ import plotly.express as px
 
 @st.cache
 def get_data():
-    return pd.read_csv("http://data.insideairbnb.com/united-states/ny/new-york-city/2019-09-12/visualisations/listings.csv")
+    return pd.read_csv("http://data.insideairbnb.com/united-states/ny/new-york-city/2022-06-03/visualisations/listings.csv")
+    #return pd.read_csv("http://data.insideairbnb.com/united-states/ny/new-york-city/2019-09-12/visualisations/listings.csv")
+
 
 df = get_data()
 st.title("Streamlit 101: An in-depth introduction")
