@@ -15,7 +15,7 @@ def DBConnect(dbName=None):
     -------
 
     """
-    conn = mysql.connect(host='localhost', user='root', password=os.getenv('mysqlPass'),
+    conn = mysql.connect(host='localhost', user='root', password='root',
                          database=dbName, buffered=True)
     cur = conn.cursor()
     return conn, cur
@@ -64,7 +64,7 @@ def createTables(dbName: str) -> None:
 
     """
     conn, cur = DBConnect(dbName)
-    sqlFile = 'day5_schema.sql'
+    sqlFile = 'sql/schema.sql'
     fd = open(sqlFile, 'r')
     readSqlFile = fd.read()
     fd.close()
@@ -194,7 +194,7 @@ def db_execute_fetch(*args, many=False, tablename='', rdf=True, **kwargs) -> pd.
     # get row count and show info
     nrow = cursor1.rowcount
     if tablename:
-        print(f"{nrow} recrods fetched from {tablename} table")
+        print(f"{nrow} records fetched from {tablename} table")
 
     cursor1.close()
     connection.close()
@@ -211,6 +211,6 @@ if __name__ == "__main__":
     emojiDB(dbName='tweets')
     createTables(dbName='tweets')
 
-    df = pd.read_csv('fintech.csv')
+    df = pd.read_csv('.data/cleaned_fintech.csv')
 
     insert_to_tweet_table(dbName='tweets', df=df, table_name='TweetInformation')
