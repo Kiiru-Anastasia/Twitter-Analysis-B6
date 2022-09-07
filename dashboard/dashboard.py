@@ -54,7 +54,7 @@ def wordCloud():
         cleanText += " ".join(tokens) + " "
 
     wc = WordCloud(width=650, height=450, background_color='white', min_font_size=5).generate(cleanText)
-    st.title("Tweet Text Word Cloud")
+    st.header("Tweet Text Word Cloud")
     st.image(wc.to_array())
 
 def stBarChart():
