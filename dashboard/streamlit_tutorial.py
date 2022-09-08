@@ -2,6 +2,8 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 @st.cache
 def get_data():
     return pd.read_csv("http://data.insideairbnb.com/united-states/ny/new-york-city/2022-06-03/visualisations/listings.csv")
@@ -93,10 +95,10 @@ st.write("At 169 days, Brooklyn has the lowest average availability. At 226, Sta
     If we include expensive listings (price>=$200), the numbers are 171 and 230 respectively.")
 st.markdown("_**Note:** There are 18431 records with `availability_365` 0 (zero), which I've ignored._")
 
-fig = df.query("availability_365>0").groupby("neighbourhood_group")\
+df.query("availability_365>0").groupby("neighbourhood_group")\
     .availability_365.mean().plot.bar(rot=0).set(title="Average availability by neighborhood group",
         xlabel="Neighborhood group", ylabel="Avg. availability (in no. of days)")
-st.pyplot(fig)
+st.pyplot()
 
 st.header("Properties by number of reviews")
 st.write("Enter a range of numbers in the sidebar to view properties whose review count falls in that range.")
