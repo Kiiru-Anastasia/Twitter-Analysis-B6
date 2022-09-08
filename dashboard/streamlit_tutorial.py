@@ -93,10 +93,10 @@ st.write("At 169 days, Brooklyn has the lowest average availability. At 226, Sta
     If we include expensive listings (price>=$200), the numbers are 171 and 230 respectively.")
 st.markdown("_**Note:** There are 18431 records with `availability_365` 0 (zero), which I've ignored._")
 
-df.query("availability_365>0").groupby("neighbourhood_group")\
+fig = df.query("availability_365>0").groupby("neighbourhood_group")\
     .availability_365.mean().plot.bar(rot=0).set(title="Average availability by neighborhood group",
         xlabel="Neighborhood group", ylabel="Avg. availability (in no. of days)")
-st.pyplot()
+st.pyplot(fig)
 
 st.header("Properties by number of reviews")
 st.write("Enter a range of numbers in the sidebar to view properties whose review count falls in that range.")
